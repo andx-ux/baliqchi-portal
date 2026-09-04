@@ -227,11 +227,27 @@ tbody tr:hover { background: var(--bg); }
     display: none;
     background: none;
     border: none;
-    font-size: 28px;
+    font-size: 24px;
     color: white;
     cursor: pointer;
-    z-index: 1001; 
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    transition: background 0.2s ease;
 }
+.mobile-menu-btn:hover { background: rgba(255, 255, 255, 0.12); }
+
+.nav-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(11, 26, 41, 0.5);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 999;
+}
+.nav-backdrop.show { opacity: 1; visibility: visible; }
 
 /* ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
 @media screen and (max-width: 768px) {
@@ -254,30 +270,65 @@ tbody tr:hover { background: var(--bg); }
     nav {
         position: fixed;
         top: 0;
-        right: -300px; 
-        width: 250px;
-        height: 100vh; 
-        background-color: white;
-        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        right: -300px;
+        width: 280px;
+        max-width: 82vw;
+        height: 100vh;
+        background: #ffffff;
+        box-shadow: -16px 0 40px rgba(11, 26, 41, 0.25);
+        border-radius: 20px 0 0 20px;
         flex-direction: column;
         justify-content: flex-start;
-        padding-top: 80px; 
-        transition: right 0.4s ease; 
+        padding: 100px 14px 30px;
+        overflow-y: auto;
+        transition: right 0.35s cubic-bezier(.25,.8,.25,1);
         z-index: 1000;
     }
-    
+
     nav.open {
-        right: 0; 
+        right: 0;
     }
-    
+
+    nav::before {
+        content: "MENYU";
+        position: absolute;
+        top: 68px;
+        left: 28px;
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        color: var(--text-light);
+    }
+
     nav a {
-        margin: 10px 20px;
-        font-size: 18px;
+        margin: 3px 0;
+        padding: 14px 16px;
+        font-size: 16px;
+        font-weight: 700;
         color: var(--text-dark);
-        border-bottom: 1px solid #f1f1f1;
-        padding-bottom: 15px;
-        display: block;
+        border-bottom: none;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        transition: background 0.2s ease, color 0.2s ease, transform 0.15s ease;
     }
+
+    nav a:hover { background: var(--bg); }
+    nav a:active { transform: scale(0.98); }
+
+    nav a.active {
+        background: #fff3e0;
+        color: var(--accent);
+    }
+
+    /* Hər menyu bəndi üçün ikon (yalnız mobil bölmə menyusunda) */
+    nav a[href="index.html"]::before { content: "🏠"; }
+    nav a[href="news.html"]::before { content: "📰"; }
+    nav a[href="encyclopedia.html"]::before { content: "📚"; }
+    nav a[href="map.html"]::before { content: "🗺️"; }
+    nav a[href="gallery.html"]::before { content: "📸"; }
+    nav a[href="catches.html"]::before { content: "🎣"; }
 
     /* 3. Таблица прокручивается внутри карточки */
     .table-responsive {

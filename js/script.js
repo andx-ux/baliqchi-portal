@@ -7,15 +7,25 @@ document.addEventListener('DOMContentLoaded', () => {
     const mainNav = document.getElementById('mainNav');
 
     if (menuBtn && mainNav) {
-        menuBtn.addEventListener('click', () => {
-            mainNav.classList.toggle('open');
+        // Menyu açılanda arxa fonu qaraldan pərdə (klikləyəndə menyu bağlanır)
+        const navBackdrop = document.createElement('div');
+        navBackdrop.className = 'nav-backdrop';
+        document.body.appendChild(navBackdrop);
 
-            if (mainNav.classList.contains('open')) {
-                menuBtn.innerHTML = '✕';
-            } else {
-                menuBtn.innerHTML = '☰';
-            }
+        function closeMenu() {
+            mainNav.classList.remove('open');
+            navBackdrop.classList.remove('show');
+            menuBtn.innerHTML = '☰';
+        }
+
+        menuBtn.addEventListener('click', () => {
+            const isOpen = mainNav.classList.toggle('open');
+            navBackdrop.classList.toggle('show', isOpen);
+            menuBtn.innerHTML = isOpen ? '✕' : '☰';
         });
+
+        navBackdrop.addEventListener('click', closeMenu);
+        mainNav.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
     }
 
     // ==========================================
