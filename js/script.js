@@ -15,12 +15,14 @@ document.addEventListener('DOMContentLoaded', () => {
         function closeMenu() {
             mainNav.classList.remove('open');
             navBackdrop.classList.remove('show');
+            menuBtn.classList.remove('is-open');
             menuBtn.innerHTML = '☰';
         }
 
         menuBtn.addEventListener('click', () => {
             const isOpen = mainNav.classList.toggle('open');
             navBackdrop.classList.toggle('show', isOpen);
+            menuBtn.classList.toggle('is-open', isOpen);
             menuBtn.innerHTML = isOpen ? '✕' : '☰';
         });
 

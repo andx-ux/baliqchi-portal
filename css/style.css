@@ -225,18 +225,22 @@ tbody tr:hover { background: var(--bg); }
    ====================================================== */
 .mobile-menu-btn {
     display: none;
-    background: none;
+    background: rgba(11, 26, 41, 0.35);
     border: none;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
     cursor: pointer;
     z-index: 1001;
-    width: 40px;
-    height: 40px;
-    border-radius: 10px;
-    transition: background 0.2s ease;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease, transform 0.15s ease;
 }
-.mobile-menu-btn:hover { background: rgba(255, 255, 255, 0.12); }
+.mobile-menu-btn:hover { background: rgba(11, 26, 41, 0.55); }
+.mobile-menu-btn:active { transform: scale(0.92); }
+.mobile-menu-btn.is-open { background: #0b3a5c; }
 
 .nav-backdrop {
     position: fixed;
@@ -264,7 +268,7 @@ tbody tr:hover { background: var(--bg); }
     }
     
     .mobile-menu-btn {
-        display: block; 
+        display: flex;
     }
     
     nav {
