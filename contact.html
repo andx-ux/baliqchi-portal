@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Əlaqə - Balıqçı Portalı</title>
+    <!-- Правильный путь к CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <!-- Шапка -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+        <!-- Кнопка мобильного меню -->
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">Əsas səhifə</a>
+            <a href="news.html">Xəbərlər</a>
+            <a href="encyclopedia.html">Ensiklopediya</a>
+            <a href="map.html">Xəritə</a>
+            <a href="gallery.html">Qalereya</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="grid-2">
+            <!-- Блок с контактами -->
+            <div class="card">
+                <h2 class="card-title">📞 Bizimlə Əlaqə</h2>
+                <p>📍 <strong>Ünvan:</strong> Bakı şəhəri, Azərbaycan</p>
+                <br>
+                <p>📧 <strong>E-poçt:</strong> info@baliqchi.az</p>
+                <br>
+                <p>📱 <strong>Telefon:</strong> +994 (00) 000-00-00</p>
+                <br>
+                <p style="color: var(--text-light);">Təklif, irad və ya əməkdaşlıq üçün bizə yaza bilərsiniz.</p>
+            </div>
+
+            <!-- Форма обратной связи (используем готовые классы из style.css) -->
+            <div class="card">
+                <h2 class="card-title">✉️ Mesaj göndər</h2>
+                <form id="contactForm">
+                    <input type="text" id="contactName" placeholder="Adınız" class="admin-input" required>
+                    <input type="email" id="contactEmail" placeholder="E-poçt ünvanınız" class="admin-input" required>
+                    <textarea id="contactMessage" placeholder="Mesajınız..." rows="4" class="admin-input" required></textarea>
+                    <button type="submit" id="contactSubmitBtn" class="admin-btn">Göndər</button>
+                    <p id="contactSuccessMsg" class="msg-success">✅ Mesajınız göndərildi!</p>
+                    <p id="contactErrorMsg" class="msg-error">❌ Xəta baş verdi. Yenidən cəhd edin.</p>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <!-- Подключаем скрипт для работы меню -->
+    <script src="js/script.js"></script>
+    <!-- Скрипт отправки формы обратной связи -->
+    <script type="module" src="js/contact.js"></script>
+</body>
+
+</html>

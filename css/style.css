@@ -1,0 +1,222 @@
+:root {
+  --primary: #0f4c75;
+  --secondary: #1b4332;
+  --accent: #ff8c00;
+  --bg: #f4f6f8;
+  --card-bg: #ffffff;
+  --text-dark: #1b262c;
+  --text-light: #6c757d;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+
+/* === НОВЫЙ КРАСИВЫЙ ФОН (Градиент "Утренний бриз") === */
+body { 
+    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
+    background-attachment: fixed; /* приклеиваем фон, чтобы не тормозил */
+    color: var(--text-dark); 
+    line-height: 1.6; 
+}
+
+a { text-decoration: none; color: inherit; }
+
+/* ======================================================
+   ОСНОВНЫЕ СТИЛИ (ШАПКА И СЕТКИ)
+   ====================================================== */
+header { background-color: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; }
+.logo { font-size: 24px; font-weight: bold; }
+nav { display: flex; gap: 20px; }
+nav a { padding: 5px 10px; border-radius: 4px; }
+nav a:hover, nav a.active { background: rgba(255, 255, 255, 0.1); color: var(--accent); }
+
+.container { max-width: 1200px; margin: 20px auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+
+/* === НОВАЯ ТЕНЬ ДЛЯ КАРТОЧЕК (Эффект парения) === */
+.card { 
+    background: var(--card-bg); 
+    border-radius: 12px; 
+    padding: 20px; 
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+}
+
+.card-title { font-size: 18px; margin-bottom: 15px; color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-weight: 600; display: flex; justify-content: space-between; }
+.controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; min-width: 0; }
+.control-group { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 14px; min-width: 0; }
+.date-switcher { display: flex; align-items: center; gap: 10px; background: var(--bg); padding: 5px 10px; border-radius: 6px; }
+select, button { padding: 6px 12px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px; cursor: pointer; background: white; max-width: 100%; }
+button:hover { background: #e2e6ea; }
+
+.grid-2 { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 20px; }
+footer { text-align: center; padding: 30px 20px; background: var(--secondary); color: white; margin-top: 40px; font-size: 14px; }
+footer a { margin: 0 10px; color: #a3b18a; }
+footer a:hover { color: white; }
+
+/* ======================================================
+   ПОГОДА И ТАБЛИЦА
+   ====================================================== */
+.weather-grid { display: flex; justify-content: space-around; text-align: center; flex-wrap: wrap; gap: 15px; }
+.weather-item { display: flex; flex-direction: column; align-items: center; }
+.weather-icon { font-size: 28px; margin-bottom: 5px; }
+.weather-val { font-size: 24px; font-weight: bold; color: var(--primary); }
+.weather-lbl { font-size: 11px; color: var(--text-light); text-transform: uppercase; }
+
+.table-responsive { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; margin-top: 5px; min-width: 600px; }
+th, td { text-align: left; padding: 12px; border-bottom: 1px solid var(--bg); }
+th { background: var(--bg); color: var(--text-light); font-size: 13px; text-transform: uppercase; }
+.indicator { padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; color: white; text-align: center; display: inline-block; width: 85px; }
+.good { background-color: #28a745; }
+.normal { background-color: #ffc107; color: #333; }
+.bad { background-color: #dc3545; }
+
+/* ======================================================
+   АДМИН ПАНЕЛЬ (İdarə Paneli)
+   ====================================================== */
+.admin-wrapper { max-width: 500px; margin-top: 50px; }
+.admin-input { width: 100%; padding: 10px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
+.admin-input-file { border: 1px dashed #ccc; background: #f9f9f9; }
+.admin-btn { background: var(--primary); color: white; border: none; padding: 12px; width: 100%; border-radius: 6px; cursor: pointer; font-weight: bold; }
+.admin-btn:disabled { background: #ccc; cursor: not-allowed; }
+.admin-btn-logout { background: #dc3545; color: white; border: none; padding: 5px 15px; border-radius: 6px; cursor: pointer; }
+.admin-label { font-size: 13px; font-weight: bold; color: var(--secondary); display: block; margin-bottom: 5px;}
+.admin-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+.msg-error { color: red; display: none; margin-top: 10px; text-align: center; }
+.msg-success { color: green; display: none; margin-top: 15px; text-align: center; font-weight: bold; }
+
+/* ======================================================
+   ГАЛЕРЕЯ И СЛАЙДЕР
+   ====================================================== */
+.gallery-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+.gallery-item { height: 110px; border-radius: 8px; position: relative; overflow: hidden; display: flex; align-items: flex-end; padding: 10px; color: white; font-size: 12px; font-weight: bold; text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); background-image: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent); }
+.slider-wrapper { position: relative; max-width: 100%; margin: 0 auto 30px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+.slides { display: flex; transition: transform 0.5s ease-in-out; }
+.slide { min-width: 100%; position: relative; }
+.slide img { width: 100%; height: 450px; object-fit: cover; display: block; }
+.slide-text { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); color: white; padding: 30px 20px 20px 20px; }
+.slide-text h3 { margin-bottom: 5px; color: #fff; }
+.slide-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(0,0,0,0.6); color: white; border: none; width: 40px; height: 40px; cursor: pointer; font-size: 18px; border-radius: 50%; transition: background 0.3s; display: flex; justify-content: center; align-items: center; }
+.slide-btn:hover { background: var(--accent); }
+.prev-btn { left: 15px; }
+.next-btn { right: 15px; }
+
+/* ======================================================
+   ХАРИТЭ (КАРТА И МЕСТА)
+   ====================================================== */
+.filter-wrap { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; }
+.map-iframe { border: 0; border-radius: 8px; width: 100%; height: 400px; display: block; }
+.loc-header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 1px solid #eee; padding-bottom: 10px; margin-bottom: 10px; gap: 10px; }
+.loc-title { color: var(--secondary); font-size: 16px; margin: 0; }
+.loc-badge { padding: 4px 10px; border-radius: 12px; font-size: 11px; font-weight: bold; color: white; white-space: nowrap; }
+.badge-free { background: #28a745; }
+.badge-paid { background: #ffc107; color: #000; }
+.badge-sea { background: var(--primary); }
+.badge-ban { background: #dc3545; }
+.loc-text { font-size: 13px; margin-bottom: 5px; }
+
+/* ======================================================
+   XƏBƏRLƏR (NEWS) И ПОЛИТИКА
+   ====================================================== */
+.news-item { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; }
+.news-img { width: 100px; height: 80px; border-radius: 8px; flex-shrink: 0; }
+.news-content h4 { font-size: 14px; margin-bottom: 5px; color: var(--secondary); }
+.news-content span { font-size: 11px; color: var(--text-light); }
+.news-link { color: var(--accent); font-size: 12px; font-weight: bold; margin-top: 5px; display: inline-block; }
+.news-subtitle { color: var(--text-light); margin-bottom: 20px; }
+.news-desc { font-size: 13px; margin-top: 5px; color: var(--text-dark); }
+.policy-subtitle { margin-top: 15px; margin-bottom: 5px; color: var(--secondary); font-size: 16px; }
+.policy-text { font-size: 14px; margin-bottom: 15px; color: var(--text-light); }
+
+/* ======================================================
+   АДАПТИВНЫЙ ДИЗАЙН И БОКОВОЕ МЕНЮ (ДЛЯ ТЕЛЕФОНОВ)
+   ====================================================== */
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001; 
+}
+
+/* ИСПРАВЛЕНИЯ ДЛЯ МОБИЛЬНЫХ УСТРОЙСТВ */
+@media screen and (max-width: 768px) {
+    /* 1. Запрещаем странице ломаться в ширину */
+    body { overflow-x: hidden; }
+    
+    /* 2. Шапка растягивается на весь экран */
+    header {
+        min-width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 15px 20px;
+    }
+    
+    .mobile-menu-btn {
+        display: block; 
+    }
+    
+    nav {
+        position: fixed;
+        top: 0;
+        right: -300px; 
+        width: 250px;
+        height: 100vh; 
+        background-color: white;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+        flex-direction: column;
+        justify-content: flex-start;
+        padding-top: 80px; 
+        transition: right 0.4s ease; 
+        z-index: 1000;
+    }
+    
+    nav.open {
+        right: 0; 
+    }
+    
+    nav a {
+        margin: 10px 20px;
+        font-size: 18px;
+        color: var(--text-dark);
+        border-bottom: 1px solid #f1f1f1;
+        padding-bottom: 15px;
+        display: block;
+    }
+
+    /* 3. Таблица прокручивается внутри карточки */
+    .table-responsive {
+        display: block;
+        width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* 4. Блоки "Регион" и "Тарих" ставим друг под другом */
+    .controls { flex-direction: column; align-items: flex-start; }
+    
+    /* 5. Выпадающий список не вылезает за края */
+    #regionSelect, .control-group {
+        width: 100%;
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+    .grid-2 { grid-template-columns: minmax(0, 1fr); gap: 15px; }
+    .container { padding: 10px; }
+
+    /* 6. Погода перестраивается в ровные квадраты 2х2 */
+    .weather-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 15px; }
+
+    /* 7. Заголовки и текст не вылезают за края узкого экрана */
+    .card-title { flex-wrap: wrap; }
+    .news-item, .location-card .loc-header { flex-wrap: wrap; }
+    img, iframe, table, pre, video { max-width: 100%; }
+}
+
+@media screen and (max-width: 480px) {
+    /* На самых маленьких экранах выстраиваем погоду в один столбик */
+    .weather-grid { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+    h2.card-title { font-size: 20px; }
+}

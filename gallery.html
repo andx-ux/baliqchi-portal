@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fotoqalereya - Balıqçı Portalı</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">Əsas səhifə</a>
+            <a href="news.html">Xəbərlər</a>
+            <a href="encyclopedia.html">Ensiklopediya</a>
+            <a href="map.html">Xəritə</a>
+            <a href="gallery.html" class="active">Qalereya</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title" style="border-bottom: none;">📸 Həftənin Ən Yaxşı Kadrları (Slayder)</h2>
+
+            <!-- Слайдер -->
+            <div class="slider-wrapper">
+                <!-- Оставляем пустой контейнер, сюда прилетят фото из базы -->
+                <div class="slides" id="sliderTracks">
+                    <p style="text-align: center; padding: 40px; width: 100%;">Şəkillər yüklənir... (Загрузка...)</p>
+                </div>
+
+                <button class="slide-btn prev-btn" id="prevSlideBtn">❮</button>
+                <button class="slide-btn next-btn" id="nextSlideBtn">❯</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+
+    <!-- ВАЖНО: Добавили type="module" -->
+    <script type="module" src="js/gallery.js"></script>
+</body>
+
+</html>

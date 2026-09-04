@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balıq Ensiklopediyası - Balıqçı Portalı</title>
+    <!-- Правильный путь к CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+        <!-- Кнопка мобильного меню -->
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">Əsas səhifə</a>
+            <a href="news.html">Xəbərlər</a>
+            <a href="encyclopedia.html" class="active">Ensiklopediya</a>
+            <a href="map.html">Xəritə</a>
+            <a href="gallery.html">Qalereya</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Заголовок и поиск -->
+        <div class="card">
+            <h2 class="card-title" style="border-bottom: none;">📚 Azərbaycan Balıqlarının Ensiklopediyası</h2>
+            <p style="color: var(--text-light); margin-bottom: 15px; font-size: 14px;">
+                Bütün növ balıqlar: yaşayış mühiti, nə ilə və necə tutulması, ən yaxşı mövsüm.
+            </p>
+            <input type="text" id="fishSearch" placeholder="🔍 Balıq adı ilə axtar (məsələn: Sazan, Kütüm, Forel)..."
+                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 14px;">
+        </div>
+
+        <!-- Сетка карточек рыб (Сюда данные падают из базы) -->
+        <div id="fishGrid"
+            style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+            <p id="loadingText">Məlumatlar yüklənir... (Загрузка...)</p>
+        </div>
+
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <!-- 1. Скрипт для работы меню -->
+    <!-- 1. Скрипт для работы бокового меню -->
+    <script src="js/script.js"></script>
+
+    <!-- 2. Скрипт Firebase (Умная загрузка рыб + Поиск) -->
+    <script type="module" src="js/encyclopedia.js"></script>
+</body>
+
+</html>

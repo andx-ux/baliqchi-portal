@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xəbərlər - Balıqçı Portalı</title>
+    <!-- Правильный путь к CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+        <!-- Кнопка мобильного меню -->
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">Əsas səhifə</a>
+            <a href="news.html" class="active">Xəbərlər</a>
+            <a href="encyclopedia.html">Ensiklopediya</a>
+            <a href="map.html">Xəritə</a>
+            <a href="gallery.html">Qalereya</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <h2 class="card-title" style="border-bottom: none;">📰 Bütün Xəbərlər</h2>
+            <p class="news-subtitle">Balıqçılıq dünyasında ən son yeniliklər, qanunlar və turnirlər.</p>
+
+            <!-- Сюда JavaScript сам вставит новости -->
+            <div class="grid-2" id="newsContainer">
+                <p id="loadingText">Xəbərlər yüklənir... (Загрузка новостей...)</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <!-- 1. Скрипт для работы меню -->
+    <script src="js/script.js"></script>
+    <!-- 2. Скрипт Firebase (Загрузка новостей) -->
+    <script type="module" src="js/news.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xəritə və Məkanlar - Balıqçı Portalı</title>
+    <!-- Правильный путь к CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">Əsas səhifə</a>
+            <a href="news.html">Xəbərlər</a>
+            <a href="encyclopedia.html">Ensiklopediya</a>
+            <a href="map.html" class="active">Xəritə</a>
+            <a href="gallery.html">Qalereya</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Заголовок и фильтры -->
+        <div class="card filter-wrap">
+            <div>
+                <h2 class="loc-title" style="font-size: 18px;">📍 Azərbaycanın Balıq Tutulan Yerləri</h2>
+                <p class="loc-text" style="color: var(--text-light); margin-top: 5px;">Ölkə ərazisindəki əsas çaylar,
+                    göllər, su anbarları və dəniz sahilləri.</p>
+            </div>
+            <div>
+                <select id="typeFilter" class="admin-input" style="margin-bottom: 0; width: auto;">
+                    <option value="all">Bütün məkanlar (Все места)</option>
+                    <option value="pulsuz">🏕️ Vəhşi (Ödənişsiz / Бесплатные)</option>
+                    <option value="pullu">💰 Pullu (Ödənişli / Платные)</option>
+                    <option value="deniz">🌊 Dəniz (Каспийское море)</option>
+                    <option value="qoruq">⛔ Qoruq (Заповедники / Qadağandır)</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Интерактивная карта -->
+        <div class="card" style="padding: 10px;">
+            <iframe class="map-iframe"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106517.585108035!2d45.86460677567791!3d40.23190807759864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307cd91aa21ddf%3A0xe6c9526b3e83cd08!2sAzerbaijan!5e0!3m2!1sen!2saz!4v1690000000000!5m2!1sen!2saz"
+                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+        </div>
+
+        <!-- Список локаций -->
+        <div class="grid-2" id="locationsGrid">
+
+            <!-- 1. Кура -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Kür çayı (Neftçala / Salyan)</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Kütüm, Şirbit, Çapaq, Vobla</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Ölkənin əsas balıqçılıq arteriyası. Sahillər boyu
+                    vəhşi düşərgələr üçün çoxlu yer var.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 2. Мингечевир -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Mingəçevir Su Anbarı</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Qalınalın, Çapaq, Naqqa</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Ən böyük su anbarı. Qayıqla ov etmək və böyük
+                    trofeylər tutmaq üçün idealdır.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 3. Озеро Сарысу -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Sarısu gölü (İmişli/Sabirabad)</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Dabanbalığı, Qızılüzgəc</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Azərbaycanın ən böyük gölü. Qamışlıqlarla zəngindir,
+                    klassik üzgəcli olta üçün əladır.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 4. Река Аракс (Араз) -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Araz çayı</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Naqqa, Sazan, Şirbit</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Sərhəd çayıdır. Çox güclü axını var.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 5. Водохранилище Шамкир -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Şəmkir Su Anbarı</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Şəmayı, Çapaq, Sazan, Ağ amur</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Dərin və təmiz suyu var. Həm sahil, həm də qayıqla ov
+                    üçün populyardır.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 6. Пираллахи (Каспий) -->
+            <div class="card location-card" data-type="deniz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Pirallahı Körpüsü (Abşeron)</h3>
+                    <span class="loc-badge badge-sea">🌊 Dəniz ovu</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Kefal, Kütüm, Xul</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Bakı ətrafında ən məşhur dəniz ovu məkanı. Körpü
+                    üzərindən donka ilə ov.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 7. Платное озеро Гызмейдан -->
+            <div class="card location-card" data-type="pullu">
+                <div class="loc-header">
+                    <h3 class="loc-title">Qızmeydan gölü (Şamaxı)</h3>
+                    <span class="loc-badge badge-paid">💰 Pullu (15 AZN)</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Ağ amur, Qalınalın</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Avtomobil parkinqi və besedkalar var. Ailəvi istirahət
+                    üçün idealdır.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 8. Озеро Нохур (Габала) -->
+            <div class="card location-card" data-type="pullu">
+                <div class="loc-header">
+                    <h3 class="loc-title">Nohur gölü (Qəbələ)</h3>
+                    <span class="loc-badge badge-paid">💰 Pullu turistik</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Amur</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Çox gözəl mənzərəsi var, lakin turistik zona olduğu
+                    üçün kənar səslər çoxdur.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 9. Озеро Гаджигабул -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Hacıqabul gölü</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Kefal, Sazan, Çapaq</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> İsti sulu və dayaz göldür. Payız aylarında kefal ovu
+                    üçün yaxşı nəticə verir.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 10. Река Самур -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Samur çayı (Şimal zonası)</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Forel, Şirbit</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Sürətli dağ çayıdır. Spinner və süni yemlərlə aktiv ov
+                    üçün uyğundur.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 11. Набрань / Юг (Море) -->
+            <div class="card location-card" data-type="deniz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Xəzər dənizi (Nabran)</h3>
+                    <span class="loc-badge badge-sea">🌊 Dəniz ovu</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Kütüm, Kefal, Siyənək</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Uzun qumsal sahillər. Payız aylarında kütüm ovu üçün
+                    əla seçimdir.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 12. Ханбуланчай -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Xanbulançay (Lənkəran)</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Kütüm, Ağ amur</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Cənub zonasının ən mənzərəli su hövzələrindən biridir.
+                    Meşəlik əhatəsində yerləşir.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 13. Джейранбатан (Заповедник) -->
+            <div class="card location-card" data-type="qoruq">
+                <div class="loc-header">
+                    <h3 class="loc-title">Ceyranbatan Su Anbarı</h3>
+                    <span class="loc-badge badge-ban">⛔ Qoruq</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Amur</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> İçməli su anbarı olduğu üçün sanitar zonadır. Əksər
+                    ərazilərində balıq ovu qəti qadağandır.</p>
+            </div>
+
+            <!-- 14. Гёйгёль / Маралгёль (Заповедник) -->
+            <div class="card location-card" data-type="qoruq">
+                <div class="loc-header">
+                    <h3 class="loc-title">Göygöl və Maralgöl</h3>
+                    <span class="loc-badge badge-ban">⛔ Milli Park</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Göygöl foreli</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Dövlət təbiət qoruğudur. Hər cür balıq ovu və suya
+                    girmək qəti qadağandır.</p>
+            </div>
+
+            <!-- 15. Каспийское море (Юг - Ленкорань и Астара) -->
+            <div class="card location-card" data-type="deniz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Xəzər dənizi (Cənub)</h3>
+                    <span class="loc-badge badge-sea">🌊 Dəniz ovu</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Kütüm, Kefal, Siyənək, Xul</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Xüsusilə payız və erkən yaz aylarında kütüm ovlamaq
+                    üçün bütün ölkədən bura gəlirlər.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 16. Виляшчай (Масаллы) -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Viləşçay (Masallı)</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Şirbit, Çapaq</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Həm çayın özündə, həm də anbarın sakit sularında donka
+                    və fiderlə ov üçün əla yerdir.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 17. Реки Астарачай и Ленкоранчай -->
+            <div class="card location-card" data-type="pulsuz">
+                <div class="loc-header">
+                    <h3 class="loc-title">Astaraçay və Lənkərançay</h3>
+                    <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Şəmayı, Şirbit, kiçik Forel</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Sürətli dağ çaylarıdır. Suyun səviyyəsi fəsildən asılı
+                    olaraq çox dəyişir.</p>
+                <button class="admin-btn" style="margin-top: 10px;">🗺️ Marşrut qur</button>
+            </div>
+
+            <!-- 18. Гызылагаджский залив (Заповедник) -->
+            <div class="card location-card" data-type="qoruq">
+                <div class="loc-header">
+                    <h3 class="loc-title">Qızılağac Milli Parkı</h3>
+                    <span class="loc-badge badge-ban">⛔ Qoruq</span>
+                </div>
+                <p class="loc-text">🐟 <strong>Balıqlar:</strong> Sazan, Kütüm, Kefal</p>
+                <p class="loc-text">🏕️ <strong>Məlumat:</strong> Azərbaycanın ən zəngin faunalarından biridir. Sənaye
+                    və həvəskar balıq ovu qadağandır.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Подвал -->
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <!-- 1. Скрипт для работы мобильного меню -->
+    <script src="js/script.js"></script>
+    <!-- 2. Скрипт для работы фильтра водоемов -->
+    <script src="js/map.js"></script>
+</body>
+
+</html>

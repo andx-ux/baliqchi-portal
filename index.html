@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Balıqçı Portalı - Azərbaycanda Balıqçılıq</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+
+        <!-- Кнопка для телефона -->
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+
+        <nav id="mainNav">
+            <a href="index.html" class="active">Əsas səhifə</a>
+            <a href="news.html">Xəbərlər</a>
+            <a href="encyclopedia.html">Ensiklopediya</a>
+            <a href="map.html">Xəritə</a>
+            <a href="gallery.html">Qalereya</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Панель управления: Выбор региона и даты -->
+        <div class="controls card">
+            <div class="control-group">
+                <label>📍 Region:</label>
+                <select id="regionSelect"
+                    style="padding: 8px; border-radius: 6px; border: 1px solid #ccc; font-weight: bold; cursor: pointer;">
+                    <!-- Mərkəz və Abşeron -->
+                    <option value="baku">Bakı və Abşeron</option>
+                    <option value="sumqayit">Sumqayıt və Novxanı sahilləri</option>
+                    <option value="pirallahi">Pirallahı və Gürgən (Dəniz)</option>
+
+                    <!-- Şimal zonası -->
+                    <option value="khachmaz">Xaçmaz (Nabran sahilləri)</option>
+                    <option value="quba">Quba və Qusar çayları</option>
+                    <option value="shamaxi">Şamaxı (Qızmeydan / Dağlıq)</option>
+                    <option value="gabala">Qəbələ (Nohur gölü / Çaylar)</option>
+
+                    <!-- Kür çayı və Su anbarları (Qərb) -->
+                    <option value="mingechevir">Mingəçevir (Su anbarı / Kür)</option>
+                    <option value="yevlax">Yevlax (Kür çayı)</option>
+                    <option value="ganja">Gəncə və Göygöl zonası</option>
+                    <option value="shamkir">Şəmkir Su Anbarı</option>
+                    <option value="gazakh">Qazax və Ağstafa (Kür çayı)</option>
+
+                    <!-- Aran zonası (Kür və Araz) -->
+                    <option value="sabirabad">Sabirabad (Kür və Arazın qovuşması)</option>
+                    <option value="imishli">İmişli (Sarısu gölü)</option>
+                    <option value="shirvan">Şirvan (Hacıqabul gölü)</option>
+
+                    <!-- Cənub zonası -->
+                    <option value="neftchala">Neftçala (Kürün mənsəbi / Dəniz)</option>
+                    <option value="masalli">Masallı (Viləşçay su anbarı)</option>
+                    <option value="lenkaran">Lənkəran (Xanbulançay / Dəniz)</option>
+                    <option value="astara">Astara (Astaraçay / Dəniz sahilləri)</option>
+
+                    <!-- Qarabağ və Şərqi Zəngəzur -->
+                    <option value="karabakh">Qarabağ (Suqovuşan / Xaçınçay)</option>
+                    <option value="zangilan">Zəngilan / Cəbrayıl (Araz çayı)</option>
+                </select>
+            </div>
+            <div class="control-group">
+                <label>📅 Tarix (Proqnoz):</label>
+                <div class="date-switcher">
+                    <button id="prevDayBtn">◄</button>
+                    <span id="currentDateDisplay">17 Avqust 2026 (Bugün)</span>
+                    <button id="nextDayBtn">►</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Виджет погоды (Исправленный заголовок) -->
+        <div class="card">
+            <div class="card-title" style="display: flex; justify-content: flex-start; gap: 8px;">
+                <span>🌤 Hava Durumu və Şərait —</span>
+                <span id="weatherLocation" style="color: #ff8c00;">Bakı və Abşeron</span>
+            </div>
+            <div class="weather-grid">
+                <div class="weather-item">
+                    <span class="weather-icon">🌡️</span>
+                    <div class="weather-val" id="tempVal">+25°C</div>
+                    <div class="weather-lbl">Temperatur</div>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon">💧</span>
+                    <div class="weather-val" id="pressureVal">760</div>
+                    <div class="weather-lbl">Təzyiq (mm c.s.)</div>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon">💨</span>
+                    <div class="weather-val" id="windVal">3 m/s</div>
+                    <div class="weather-lbl">Külək (Şimal)</div>
+                </div>
+                <div class="weather-item">
+                    <span class="weather-icon" id="moonIcon">🌒</span>
+                    <div class="weather-val" id="moonVal">—</div>
+                    <div class="weather-lbl">Ayın fazası</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Таблица клева (Умный календарь) -->
+        <div class="card">
+            <div class="card-title">🐟 Balıqların tutulma aktivliyi (Proqnoz)</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Balıq növü</th>
+                            <th>Səhər (05:00 - 10:00)</th>
+                            <th>Günorta (10:00 - 17:00)</th>
+                            <th>Axşam (17:00 - 22:00)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="catchTableBody">
+                        <!-- Данные подгружаются через JS -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Сетка: Новости и Фотогалерея (ЖИВЫЕ ДАННЫЕ) -->
+        <div class="grid-2">
+            <!-- Блок новостей -->
+            <div class="card">
+                <div class="card-title">📰 Son Xəbərlər
+                    <a href="news.html"
+                        style="font-size: 12px; text-decoration: none; color: var(--text-light); font-weight: normal;">Hamısına
+                        bax ➔</a>
+                </div>
+                <div id="latestNewsContainer">
+                    <p style="text-align: center; color: var(--text-light); font-size: 14px;">Xəbərlər yüklənir...
+                        (Загрузка...)</p>
+                </div>
+            </div>
+
+            <!-- Фотогалерея / Отчеты -->
+            <div class="card">
+                <div class="card-title">📸 Son Ov Hesabatları
+                    <a href="gallery.html"
+                        style="font-size: 12px; text-decoration: none; color: var(--text-light); font-weight: normal;">Hamısına
+                        bax ➔</a>
+                </div>
+                <div class="gallery-grid" id="latestGalleryContainer">
+                    <p style="text-align: center; color: var(--text-light); font-size: 14px; grid-column: span 2;">
+                        Şəkillər yüklənir... (Загрузка...)</p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script type="module" src="js/index-live.js"></script>
+</body>
+
+</html>
