@@ -25,7 +25,12 @@ async function loadLatestData() {
         newsContainer.innerHTML = ""; // Убираем текст загрузки
 
         if (newsSnapshot.empty) {
-            newsContainer.innerHTML = "<p style='font-size:14px;'>Hələ xəbər yoxdur.</p>";
+            newsContainer.innerHTML = `
+                <div class="empty-state">
+                    <span class="empty-state-icon">📰</span>
+                    Hələ xəbər yoxdur. Tezliklə ilk xəbər burada olacaq!
+                </div>
+            `;
         } else {
             newsSnapshot.forEach((doc) => {
                 const data = doc.data();
@@ -51,7 +56,13 @@ async function loadLatestData() {
         galleryContainer.innerHTML = "";
 
         if (gallerySnapshot.empty) {
-            galleryContainer.innerHTML = "<p style='font-size:14px; grid-column: span 2;'>Hələ şəkil yoxdur.</p>";
+            galleryContainer.innerHTML = `
+                <div class="empty-state">
+                    <span class="empty-state-icon">📸</span>
+                    Hələ şəkil yoxdur.
+                    <a href="catches.html" class="empty-state-cta">🎣 İlk ov hesabatını sən paylaş ➔</a>
+                </div>
+            `;
         } else {
             gallerySnapshot.forEach((doc) => {
                 const data = doc.data();
@@ -65,6 +76,16 @@ async function loadLatestData() {
 
     } catch (error) {
         console.error("Xəta baş verdi:", error);
+        const errorHtml = `
+            <div class="empty-state is-error">
+                <span class="empty-state-icon">⚠️</span>
+                Məlumatları yükləmək mümkün olmadı. İnternet bağlantınızı yoxlayın.
+            </div>
+        `;
+        const newsContainer = document.getElementById("latestNewsContainer");
+        const galleryContainer = document.getElementById("latestGalleryContainer");
+        if (newsContainer) newsContainer.innerHTML = errorHtml;
+        if (galleryContainer) galleryContainer.innerHTML = errorHtml;
     }
 }
 

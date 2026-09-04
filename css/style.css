@@ -180,6 +180,14 @@ tbody tr:hover { background: var(--bg); }
 .fish-gear-ico { flex-shrink: 0; }
 
 /* ======================================================
+   BOŞ VƏZİYYƏT (Empty state)
+   ====================================================== */
+.empty-state { text-align: center; padding: 26px 15px; color: var(--text-light); font-size: 13px; border: 2px dashed #dde3e8; border-radius: 10px; grid-column: 1/-1; background: var(--bg); }
+.empty-state-icon { font-size: 30px; display: block; margin-bottom: 8px; opacity: 0.55; }
+.empty-state-cta { display: inline-block; margin-top: 10px; font-size: 12px; font-weight: 700; color: var(--accent); }
+.empty-state.is-error { border-color: #f3c2c2; background: #fff5f5; color: #c0392b; }
+
+/* ======================================================
    OV LENTİ (Пользовательские отчёты об улове)
    ====================================================== */
 .catch-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
