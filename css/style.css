@@ -23,20 +23,67 @@ a { text-decoration: none; color: inherit; }
 /* ======================================================
    ОСНОВНЫЕ СТИЛИ (ШАПКА И СЕТКИ)
    ====================================================== */
-header { background-color: var(--primary); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; }
+header { background: linear-gradient(120deg, var(--primary) 0%, #16648f 100%); color: white; padding: 15px 5%; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 1000; }
 .logo { font-size: 24px; font-weight: bold; }
 nav { display: flex; gap: 20px; }
-nav a { padding: 5px 10px; border-radius: 4px; }
+nav a { padding: 5px 10px; border-radius: 4px; transition: background 0.2s, color 0.2s; }
 nav a:hover, nav a.active { background: rgba(255, 255, 255, 0.1); color: var(--accent); }
 
 .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
 
 /* === НОВАЯ ТЕНЬ ДЛЯ КАРТОЧЕК (Эффект парения) === */
-.card { 
-    background: var(--card-bg); 
-    border-radius: 12px; 
-    padding: 20px; 
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08); 
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+/* ======================================================
+   ГЕРОЙ-БАННЕР ГЛАВНОЙ СТРАНИЦЫ
+   ====================================================== */
+.hero {
+    position: relative;
+    background: linear-gradient(160deg, #0a3a5c 0%, var(--primary) 45%, #1b7a9e 100%);
+    color: white;
+    text-align: center;
+    padding: 70px 20px 100px 20px;
+    overflow: hidden;
+}
+.hero::before {
+    content: "🎣🐟🌊";
+    position: absolute;
+    font-size: 140px;
+    opacity: 0.06;
+    top: -20px;
+    right: -20px;
+    line-height: 1;
+    letter-spacing: 20px;
+    transform: rotate(-10deg);
+    pointer-events: none;
+}
+.hero-content { max-width: 720px; margin: 0 auto; position: relative; z-index: 1; }
+.hero-eyebrow { display: inline-block; background: rgba(255, 255, 255, 0.15); padding: 6px 16px; border-radius: 20px; font-size: 13px; font-weight: 600; letter-spacing: 0.5px; margin-bottom: 18px; }
+.hero h1 { font-size: 34px; font-weight: 800; margin-bottom: 14px; text-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.hero p { font-size: 16px; opacity: 0.9; margin-bottom: 26px; line-height: 1.6; }
+.hero-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.hero-btn { padding: 12px 22px; border-radius: 30px; font-weight: 700; font-size: 14px; transition: transform 0.2s ease, box-shadow 0.2s ease; display: inline-block; }
+.hero-btn-primary { background: var(--accent); color: white; box-shadow: 0 8px 20px rgba(255, 140, 0, 0.35); }
+.hero-btn-outline { background: rgba(255, 255, 255, 0.1); color: white; border: 1.5px solid rgba(255, 255, 255, 0.6); }
+.hero-btn:hover { transform: translateY(-3px); box-shadow: 0 10px 24px rgba(0,0,0,0.25); }
+.hero-wave { display: block; width: 100%; height: auto; position: relative; margin-top: -6px; }
+
+.hero-stats { max-width: 1200px; margin: -55px auto 0 auto; padding: 0 20px; position: relative; z-index: 2; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 15px; }
+.hero-stat { background: var(--card-bg); border-radius: 12px; padding: 16px 10px; text-align: center; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1); }
+.hero-stat-num { font-size: 22px; font-weight: 800; color: var(--primary); }
+.hero-stat-lbl { font-size: 11px; color: var(--text-light); text-transform: uppercase; margin-top: 4px; letter-spacing: 0.3px; }
+
+@media screen and (max-width: 768px) {
+    .hero { padding: 50px 16px 90px 16px; }
+    .hero h1 { font-size: 25px; }
+    .hero p { font-size: 14px; }
+    .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: -45px; }
 }
 
 .card-title { font-size: 18px; margin-bottom: 15px; color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-weight: 600; display: flex; justify-content: space-between; }
@@ -64,6 +111,10 @@ footer a:hover { color: white; }
 table { width: 100%; border-collapse: collapse; margin-top: 5px; min-width: 600px; }
 th, td { text-align: left; padding: 12px; border-bottom: 1px solid var(--bg); }
 th { background: var(--bg); color: var(--text-light); font-size: 13px; text-transform: uppercase; }
+tbody tr { transition: background 0.15s ease; }
+tbody tr:hover { background: var(--bg); }
+.fish-name { display: flex; align-items: center; gap: 8px; }
+.fish-emoji { font-size: 18px; }
 .indicator { padding: 5px 10px; border-radius: 15px; font-size: 12px; font-weight: bold; color: white; text-align: center; display: inline-block; width: 85px; }
 .good { background-color: #28a745; }
 .normal { background-color: #ffc107; color: #333; }
@@ -112,6 +163,17 @@ th { background: var(--bg); color: var(--text-light); font-size: 13px; text-tran
 .badge-sea { background: var(--primary); }
 .badge-ban { background: #dc3545; }
 .loc-text { font-size: 13px; margin-bottom: 5px; }
+
+/* ======================================================
+   ENSİKLOPEDİYA (КАРТОЧКИ РЫБ)
+   ====================================================== */
+.fish-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.fish-card:hover { transform: translateY(-6px); box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14); }
+.fish-photo { width: 100%; height: 190px; object-fit: cover; display: block; }
+.fish-photo-placeholder { width: 100%; height: 190px; display: flex; align-items: center; justify-content: center; font-size: 64px; position: relative; overflow: hidden; }
+.fish-photo-placeholder::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 20%, rgba(255,255,255,0.25), transparent 60%); }
+.fish-tag { display: inline-block; font-size: 11px; font-weight: 700; padding: 3px 10px; border-radius: 12px; background: var(--bg); color: var(--primary); margin-right: 6px; margin-bottom: 8px; }
+.fish-tag-season { background: #fff3e0; color: #b56100; }
 
 /* ======================================================
    XƏBƏRLƏR (NEWS) И ПОЛИТИКА

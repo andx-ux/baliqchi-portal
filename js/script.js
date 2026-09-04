@@ -108,17 +108,17 @@ document.addEventListener('DOMContentLoaded', () => {
             catchTableBody.innerHTML = "";
 
             const fishes = [
-                { name: "Sazan / Çəki", base: { m: 'good', d: 'normal', e: 'good' } },
-                { name: "Ağ amur", base: { m: 'good', d: 'normal', e: 'good' } },
-                { name: "Qayabalığı (Qalınalın)", base: { m: 'normal', d: 'good', e: 'normal' } },
-                { name: "Forel (Alabalığı)", base: { m: 'good', d: 'bad', e: 'good' }, isColdWater: true },
-                { name: "Külmə / Vobla", base: { m: 'normal', d: 'good', e: 'normal' } },
-                { name: "Şəmayı", base: { m: 'good', d: 'good', e: 'normal' } },
-                { name: "Şirbit (Usaç)", base: { m: 'normal', d: 'bad', e: 'good' } },
-                { name: "Kefal", base: { m: 'normal', d: 'good', e: 'normal' } },
-                { name: "Kütüm", base: { m: 'bad', d: 'bad', e: 'normal' }, isColdWater: true },
-                { name: "Çapaq (Лещ)", base: { m: 'good', d: 'normal', e: 'good' } },
-                { name: "Qızılüzgəc", base: { m: 'good', d: 'good', e: 'bad' } }
+                { name: "Sazan / Çəki", emoji: "🐟", base: { m: 'good', d: 'normal', e: 'good' } },
+                { name: "Ağ amur", emoji: "🐠", base: { m: 'good', d: 'normal', e: 'good' } },
+                { name: "Qayabalığı (Qalınalın)", emoji: "🐡", base: { m: 'normal', d: 'good', e: 'normal' } },
+                { name: "Forel (Alabalığı)", emoji: "🎣", base: { m: 'good', d: 'bad', e: 'good' }, isColdWater: true },
+                { name: "Külmə / Vobla", emoji: "🐟", base: { m: 'normal', d: 'good', e: 'normal' } },
+                { name: "Şəmayı", emoji: "🐠", base: { m: 'good', d: 'good', e: 'normal' } },
+                { name: "Şirbit (Usaç)", emoji: "🐡", base: { m: 'normal', d: 'bad', e: 'good' } },
+                { name: "Kefal", emoji: "🐟", base: { m: 'normal', d: 'good', e: 'normal' } },
+                { name: "Kütüm", emoji: "🐠", base: { m: 'bad', d: 'bad', e: 'normal' }, isColdWater: true },
+                { name: "Çapaq (Лещ)", emoji: "🐡", base: { m: 'good', d: 'normal', e: 'good' } },
+                { name: "Qızılüzgəc", emoji: "🐟", base: { m: 'good', d: 'good', e: 'bad' } }
             ];
 
             fishes.forEach(fish => {
@@ -148,7 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td><strong>${fish.name}</strong></td>
+                    <td><span class="fish-name"><span class="fish-emoji">${fish.emoji}</span><strong>${fish.name}</strong></span></td>
                     <td>${getBadge(statusMorning)}</td>
                     <td>${getBadge(statusDay)}</td>
                     <td>${getBadge(statusEvening)}</td>
