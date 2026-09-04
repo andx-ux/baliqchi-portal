@@ -8,15 +8,21 @@
   --text-light: #6c757d;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: "Nunito", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; }
 
-/* === НОВЫЙ КРАСИВЫЙ ФОН (Градиент "Утренний бриз") === */
-body { 
-    background: linear-gradient(135deg, #e0eafc 0%, #cfdef3 100%);
-    background-attachment: fixed; /* приклеиваем фон, чтобы не тормозил */
-    color: var(--text-dark); 
-    line-height: 1.6; 
+/* === ФОН: мягкий "мешевый" градиент (глубина без картинок) === */
+body {
+    background:
+        radial-gradient(circle at 12% 18%, rgba(255, 255, 255, 0.65), transparent 42%),
+        radial-gradient(circle at 88% 12%, rgba(50, 130, 184, 0.28), transparent 48%),
+        radial-gradient(circle at 80% 90%, rgba(255, 140, 0, 0.14), transparent 45%),
+        linear-gradient(160deg, #eaf4fb 0%, #dde9f5 45%, #cfe3ef 100%);
+    /* fixed deyil — sticky header ilə birlikdə bəzi brauzerlərdə render qlitchinə səbəb olurdu */
+    color: var(--text-dark);
+    line-height: 1.6;
 }
+
+h1, h2, h3 { font-weight: 800; letter-spacing: -0.01em; }
 
 a { text-decoration: none; color: inherit; }
 
@@ -86,7 +92,7 @@ nav a:hover, nav a.active { background: rgba(255, 255, 255, 0.1); color: var(--a
     .hero-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: -45px; }
 }
 
-.card-title { font-size: 18px; margin-bottom: 15px; color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-weight: 600; display: flex; justify-content: space-between; }
+.card-title { font-size: 18px; margin-bottom: 15px; color: var(--primary); border-bottom: 2px solid var(--bg); padding-bottom: 10px; font-weight: 700; letter-spacing: -0.01em; display: flex; justify-content: space-between; }
 .controls { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px; min-width: 0; }
 .control-group { display: flex; align-items: center; gap: 10px; font-weight: bold; font-size: 14px; min-width: 0; }
 .date-switcher { display: flex; align-items: center; gap: 10px; background: var(--bg); padding: 5px 10px; border-radius: 6px; }
