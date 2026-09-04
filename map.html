@@ -7,6 +7,9 @@
     <title>Xəritə və Məkanlar - Balıqçı Portalı</title>
     <!-- Правильный путь к CSS -->
     <link rel="stylesheet" href="css/style.css">
+    <!-- Leaflet (canlı xəritə) -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
 </head>
 
 <body>
@@ -48,19 +51,16 @@
             </div>
         </div>
 
-        <!-- Интерактивная карта -->
+        <!-- Интерактивная карта (Leaflet + OpenStreetMap, реальные метки мест) -->
         <div class="card" style="padding: 10px;">
-            <iframe class="map-iframe"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3106517.585108035!2d45.86460677567791!3d40.23190807759864!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307cd91aa21ddf%3A0xe6c9526b3e83cd08!2sAzerbaijan!5e0!3m2!1sen!2saz!4v1690000000000!5m2!1sen!2saz"
-                allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
+            <div id="leafletMap" style="height: 450px; border-radius: 8px;"></div>
         </div>
 
         <!-- Список локаций -->
         <div class="grid-2" id="locationsGrid">
 
             <!-- 1. Кура -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="39.59" data-lng="48.98">
                 <div class="loc-header">
                     <h3 class="loc-title">Kür çayı (Neftçala / Salyan)</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -72,7 +72,7 @@
             </div>
 
             <!-- 2. Мингечевир -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="40.85" data-lng="46.95">
                 <div class="loc-header">
                     <h3 class="loc-title">Mingəçevir Su Anbarı</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -84,7 +84,7 @@
             </div>
 
             <!-- 3. Озеро Сарысу -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="39.87" data-lng="48.06">
                 <div class="loc-header">
                     <h3 class="loc-title">Sarısu gölü (İmişli/Sabirabad)</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -96,7 +96,7 @@
             </div>
 
             <!-- 4. Река Аракс (Араз) -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="39.11" data-lng="47.05">
                 <div class="loc-header">
                     <h3 class="loc-title">Araz çayı</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -107,7 +107,7 @@
             </div>
 
             <!-- 5. Водохранилище Шамкир -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="40.77" data-lng="46.05">
                 <div class="loc-header">
                     <h3 class="loc-title">Şəmkir Su Anbarı</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -119,7 +119,7 @@
             </div>
 
             <!-- 6. Пираллахи (Каспий) -->
-            <div class="card location-card" data-type="deniz">
+            <div class="card location-card" data-type="deniz" data-lat="40.42" data-lng="50.35">
                 <div class="loc-header">
                     <h3 class="loc-title">Pirallahı Körpüsü (Abşeron)</h3>
                     <span class="loc-badge badge-sea">🌊 Dəniz ovu</span>
@@ -131,7 +131,7 @@
             </div>
 
             <!-- 7. Платное озеро Гызмейдан -->
-            <div class="card location-card" data-type="pullu">
+            <div class="card location-card" data-type="pullu" data-lat="40.55" data-lng="48.55">
                 <div class="loc-header">
                     <h3 class="loc-title">Qızmeydan gölü (Şamaxı)</h3>
                     <span class="loc-badge badge-paid">💰 Pullu (15 AZN)</span>
@@ -143,7 +143,7 @@
             </div>
 
             <!-- 8. Озеро Нохур (Габала) -->
-            <div class="card location-card" data-type="pullu">
+            <div class="card location-card" data-type="pullu" data-lat="40.97" data-lng="47.83">
                 <div class="loc-header">
                     <h3 class="loc-title">Nohur gölü (Qəbələ)</h3>
                     <span class="loc-badge badge-paid">💰 Pullu turistik</span>
@@ -155,7 +155,7 @@
             </div>
 
             <!-- 9. Озеро Гаджигабул -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="39.94" data-lng="48.92">
                 <div class="loc-header">
                     <h3 class="loc-title">Hacıqabul gölü</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -167,7 +167,7 @@
             </div>
 
             <!-- 10. Река Самур -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="41.53" data-lng="48.45">
                 <div class="loc-header">
                     <h3 class="loc-title">Samur çayı (Şimal zonası)</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -179,7 +179,7 @@
             </div>
 
             <!-- 11. Набрань / Юг (Море) -->
-            <div class="card location-card" data-type="deniz">
+            <div class="card location-card" data-type="deniz" data-lat="41.62" data-lng="48.55">
                 <div class="loc-header">
                     <h3 class="loc-title">Xəzər dənizi (Nabran)</h3>
                     <span class="loc-badge badge-sea">🌊 Dəniz ovu</span>
@@ -191,7 +191,7 @@
             </div>
 
             <!-- 12. Ханбуланчай -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="38.85" data-lng="48.72">
                 <div class="loc-header">
                     <h3 class="loc-title">Xanbulançay (Lənkəran)</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -203,7 +203,7 @@
             </div>
 
             <!-- 13. Джейранбатан (Заповедник) -->
-            <div class="card location-card" data-type="qoruq">
+            <div class="card location-card" data-type="qoruq" data-lat="40.52" data-lng="49.55">
                 <div class="loc-header">
                     <h3 class="loc-title">Ceyranbatan Su Anbarı</h3>
                     <span class="loc-badge badge-ban">⛔ Qoruq</span>
@@ -214,7 +214,7 @@
             </div>
 
             <!-- 14. Гёйгёль / Маралгёль (Заповедник) -->
-            <div class="card location-card" data-type="qoruq">
+            <div class="card location-card" data-type="qoruq" data-lat="40.60" data-lng="46.32">
                 <div class="loc-header">
                     <h3 class="loc-title">Göygöl və Maralgöl</h3>
                     <span class="loc-badge badge-ban">⛔ Milli Park</span>
@@ -225,7 +225,7 @@
             </div>
 
             <!-- 15. Каспийское море (Юг - Ленкорань и Астара) -->
-            <div class="card location-card" data-type="deniz">
+            <div class="card location-card" data-type="deniz" data-lat="38.45" data-lng="48.87">
                 <div class="loc-header">
                     <h3 class="loc-title">Xəzər dənizi (Cənub)</h3>
                     <span class="loc-badge badge-sea">🌊 Dəniz ovu</span>
@@ -237,7 +237,7 @@
             </div>
 
             <!-- 16. Виляшчай (Масаллы) -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="39.05" data-lng="48.65">
                 <div class="loc-header">
                     <h3 class="loc-title">Viləşçay (Masallı)</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -249,7 +249,7 @@
             </div>
 
             <!-- 17. Реки Астарачай и Ленкоранчай -->
-            <div class="card location-card" data-type="pulsuz">
+            <div class="card location-card" data-type="pulsuz" data-lat="38.43" data-lng="48.85">
                 <div class="loc-header">
                     <h3 class="loc-title">Astaraçay və Lənkərançay</h3>
                     <span class="loc-badge badge-free">🏕️ Ödənişsiz</span>
@@ -261,7 +261,7 @@
             </div>
 
             <!-- 18. Гызылагаджский залив (Заповедник) -->
-            <div class="card location-card" data-type="qoruq">
+            <div class="card location-card" data-type="qoruq" data-lat="39.15" data-lng="49.15">
                 <div class="loc-header">
                     <h3 class="loc-title">Qızılağac Milli Parkı</h3>
                     <span class="loc-badge badge-ban">⛔ Qoruq</span>
@@ -285,7 +285,10 @@
 
     <!-- 1. Скрипт для работы мобильного меню -->
     <script src="js/script.js"></script>
-    <!-- 2. Скрипт для работы фильтра водоемов -->
+    <!-- 2. Leaflet (карта) -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+    <!-- 3. Скрипт для работы фильтра водоемов и карты -->
     <script src="js/map.js"></script>
 </body>
 
