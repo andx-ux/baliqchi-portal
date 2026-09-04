@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="az">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ov Lenti - Balıqçı Portalı</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Шапка сайта -->
+    <header>
+        <div class="logo" style="display: flex; align-items: center; gap: 8px;">
+            <span style="font-size: 22px;">🎣</span>
+            <span>Balıqçı<span style="color: #ff8c00;">.az</span></span>
+        </div>
+        <button class="mobile-menu-btn" id="menuBtn">☰</button>
+        <nav id="mainNav">
+            <a href="index.html">Əsas səhifə</a>
+            <a href="news.html">Xəbərlər</a>
+            <a href="encyclopedia.html">Ensiklopediya</a>
+            <a href="map.html">Xəritə</a>
+            <a href="gallery.html">Qalereya</a>
+            <a href="catches.html" class="active">Ov Lenti</a>
+        </nav>
+    </header>
+
+    <div class="container">
+
+        <!-- Заголовок раздела -->
+        <div class="card">
+            <h2 class="card-title" style="border-bottom: none;">🎣 Ov Lenti</h2>
+            <p style="color: var(--text-light); font-size: 14px;">
+                Bu gün nə tutdun? Şəklini paylaş, digər balıqçılar bəyənsin və şərh yazsın. Dərc etmək üçün
+                daxil olmaq lazımdır.
+            </p>
+        </div>
+
+        <!-- Вход / Регистрация -->
+        <div class="card admin-wrapper" id="authCard" style="max-width: 100%; margin-top: 0;">
+            <h3 class="card-title" style="border-bottom: none; font-size: 16px;">Giriş / Qeydiyyat</h3>
+            <input type="email" id="authEmail" placeholder="E-poçt (Email)" class="admin-input">
+            <input type="password" id="authPassword" placeholder="Şifrə (ən azı 6 simvol)" class="admin-input">
+            <button id="authSubmitBtn" class="admin-btn">Daxil ol</button>
+            <p id="authToggleModeBtn" style="text-align: center; margin-top: 12px; font-size: 13px; color: var(--primary); cursor: pointer; font-weight: 600;">
+                Hesabınız yoxdur? Qeydiyyatdan keçin
+            </p>
+            <p id="authError" class="msg-error"></p>
+        </div>
+
+        <!-- Пользователь вошёл -->
+        <div class="card" id="userBar" style="display: none; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;">
+            <span style="font-size: 14px;">👤 Salam, <b id="userEmailLbl"></b>!</span>
+            <button id="logoutBtn2" class="admin-btn-logout">Çıxış</button>
+        </div>
+
+        <!-- Форма нового отчёта -->
+        <div class="card" id="newCatchCard" style="display: none;">
+            <h3 class="card-title" style="border-bottom: none; font-size: 16px;">➕ Yeni ov hesabatı</h3>
+
+            <label class="admin-label">Balıq növü:</label>
+            <input type="text" id="catchSpecies" list="fishNameList" placeholder="Məsələn: Sazan" class="admin-input">
+            <datalist id="fishNameList"></datalist>
+
+            <label class="admin-label">Çəki (kq):</label>
+            <input type="number" step="0.1" min="0" id="catchWeight" placeholder="Məsələn: 3.5" class="admin-input">
+
+            <label class="admin-label">Region:</label>
+            <select id="catchRegion" class="admin-input">
+                <option value="">Seçin (istəyə bağlı)</option>
+            </select>
+
+            <label class="admin-label">Yem/naживка:</label>
+            <input type="text" id="catchBait" placeholder="Məsələn: Qarğıdalı" class="admin-input">
+
+            <label class="admin-label">Şəklin birbaşa linki:</label>
+            <input type="url" id="catchImageUrl" placeholder="https://i.postimg.cc/.../ov.jpg" class="admin-input">
+
+            <div id="catchImagePreviewContainer" style="display: none; margin-bottom: 15px; text-align: center;">
+                <p style="font-size: 12px; color: var(--text-light); margin-bottom: 5px;">Önbaxış:</p>
+                <img id="catchImagePreview" src="" alt="Preview"
+                    style="max-width: 100%; max-height: 200px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+            </div>
+
+            <label class="admin-label">Qeyd (istəyə bağlı):</label>
+            <textarea id="catchNote" placeholder="Necə tutdun, hansı saatda, hava necə idi..." class="admin-input" style="min-height: 70px; resize: vertical;"></textarea>
+
+            <button id="publishCatchBtn" class="admin-btn">Dərc et</button>
+        </div>
+
+        <!-- Лента отчётов -->
+        <div class="card">
+            <div class="card-title">📸 Son Ovlar</div>
+            <div id="catchesGrid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px;">
+                <p style="text-align: center; color: var(--text-light); grid-column: 1/-1;">Yüklənir...</p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Подвал сайта -->
+    <footer>
+        © 2026 Balıqçı Portalı. Bütün hüquqlar qorunur.<br>
+        <div style="margin-top: 10px;">
+            <a href="about.html">Haqqımızda</a> |
+            <a href="contact.html">Əlaqə</a> |
+            <a href="privacy.html">Məxfilik Siyasəti</a>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+    <script type="module" src="js/catches.js"></script>
+</body>
+
+</html>

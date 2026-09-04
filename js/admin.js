@@ -2,6 +2,11 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebas
 import { getFirestore, collection, addDoc } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-firestore.js";
 import { getAuth, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-auth.js";
 
+// Yalnız bu email(lər) admin panelinə daxil ola bilər.
+// QEYD: Bu, yalnız görüntü səviyyəsində qorumadır — əsas qorumanı
+// Firebase Console-da Firestore Security Rules ilə etmək lazımdır.
+const ADMIN_EMAILS = ["anaris0909@gmail.com"];
+
 const firebaseConfig = {
     apiKey: "AIzaSyDRAOw6pZ_XtsmnRXYFK6eWS9Pvj_cxA58",
     authDomain: "baliqchi-news.firebaseapp.com",
@@ -23,12 +28,23 @@ const quill = new Quill('#editor-container', {
 
 // Проверка входа администратора
 onAuthStateChanged(auth, (user) => {
-    document.getElementById('loginScreen').style.display = user ? 'none' : 'block';
-    document.getElementById('adminScreen').style.display = user ? 'block' : 'none';
+    const isAdmin = !!user && ADMIN_EMAILS.includes(user.email);
+
+    if (user && !isAdmin) {
+        // İcazəsiz hesab daxil olmağa çalışıb — dərhal çıxarırıq
+        signOut(auth);
+        document.getElementById('loginError').textContent = "Bu hesabın admin panelinə girişi yoxdur.";
+        document.getElementById('loginError').style.display = 'block';
+        return;
+    }
+
+    document.getElementById('loginScreen').style.display = isAdmin ? 'none' : 'block';
+    document.getElementById('adminScreen').style.display = isAdmin ? 'block' : 'none';
 });
 
 // Авторизация
 document.getElementById('loginBtn').addEventListener('click', () => {
+    document.getElementById('loginError').textContent = "Məlumat yalnışdır";
     signInWithEmailAndPassword(auth, document.getElementById('adminEmail').value, document.getElementById('adminPassword').value)
         .catch(() => document.getElementById('loginError').style.display = 'block');
 });

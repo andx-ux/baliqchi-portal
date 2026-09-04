@@ -180,6 +180,20 @@ tbody tr:hover { background: var(--bg); }
 .fish-gear-ico { flex-shrink: 0; }
 
 /* ======================================================
+   OV LENTİ (Пользовательские отчёты об улове)
+   ====================================================== */
+.catch-card { transition: transform 0.25s ease, box-shadow 0.25s ease; }
+.catch-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(0, 0, 0, 0.12); }
+.catch-actions { display: flex; gap: 10px; margin-top: 10px; padding-top: 10px; border-top: 1px dashed #e2e6ea; }
+.catch-like-btn, .catch-comment-toggle { display: flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; background: var(--bg); border: none; }
+.catch-like-btn.liked { background: #ffe3e3; color: #c0392b; }
+.catch-comments { margin-top: 10px; padding-top: 10px; border-top: 1px dashed #e2e6ea; display: flex; flex-direction: column; gap: 8px; }
+.catch-comment { font-size: 12.5px; background: var(--bg); border-radius: 8px; padding: 6px 10px; }
+.catch-comment-form { display: flex; gap: 8px; }
+.catch-comment-input { flex: 1; padding: 6px 10px; border: 1px solid #ccc; border-radius: 6px; font-size: 12.5px; }
+.catch-comment-submit { font-size: 12.5px; padding: 6px 12px; }
+
+/* ======================================================
    XƏBƏRLƏR (NEWS) И ПОЛИТИКА
    ====================================================== */
 .news-item { display: flex; gap: 15px; margin-bottom: 15px; align-items: flex-start; }
