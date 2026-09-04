@@ -36,9 +36,18 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', (e) => {
             e.stopPropagation();
             const card = e.target.closest('.location-card');
-            const title = card.querySelector('.loc-title').textContent;
-            const searchQuery = encodeURIComponent(title + " Azerbaijan");
-            const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchQuery}`;
+            const lat = card.getAttribute('data-lat');
+            const lng = card.getAttribute('data-lng');
+
+            let googleMapsUrl;
+            if (lat && lng) {
+                // Dəqiq koordinatlarla marşrut qururuq (adla axtarışdan daha etibarlıdır)
+                googleMapsUrl = `https://www.google.com/maps/dir/?api=1&destination=${lat},${lng}`;
+            } else {
+                const title = card.querySelector('.loc-title').textContent;
+                const searchQuery = encodeURIComponent(title + " Azerbaijan");
+                googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${searchQuery}`;
+            }
             window.open(googleMapsUrl, '_blank');
         });
     });
